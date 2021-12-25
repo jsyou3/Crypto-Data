@@ -27,9 +27,11 @@ def get_tickers(client, sheet_name: str):
     col = sheet.col_values(6)
     # elements after 🚀
     tickers = col[15:]
-    return col
-
-
+    tfinal = []
+    for r in tickers:
+        if r not in ['Grand Total', '#REF!', '']:
+            tfinal.append(r)
+    return tfinal
 
 def main():
 
