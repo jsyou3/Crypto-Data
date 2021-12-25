@@ -20,7 +20,14 @@ def authorize_gmail():
         scope
     )
     client = gspread.authorize(creds)
-    print(client)
+    return client
+
+def get_tickers(client, sheet_name: str):
+    sheet = client.open(sheet_name).sheet1
+    col = sheet.col_values(6)
+    # elements after 🚀
+    tickers = col[15:]
+    return col
 
 
 
@@ -30,8 +37,8 @@ def main():
     headers = {
         'Authorization': f'Bearer {api_key}'
     }
-    authorize_gmail()
-    # print(json.dumps(get_polygon_data(headers=headers), indent=2))
+    gclient = authorize_gmail()
+    print(get_tickers(gclient, 'Form Test'))
 
 if __name__ == '__main__':
     main()
