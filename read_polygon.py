@@ -57,7 +57,8 @@ def main():
     }
     gclient = authorize_gmail('ga-creds.json')
     mytickers = get_tickers(gclient, 'Form Test')
-    myprices = get_prices(headers, mytickers)
+    myticker = [mytickers[0]]
+    myprices = get_prices(headers, myticker)
     update_current_value(gclient, myprices)
     print('---------  end  ---------')
 
