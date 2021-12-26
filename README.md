@@ -28,3 +28,11 @@ To rerun the script simply run
 ```
 docker-compose up
 ```
+
+# Interative Development
+
+To interact with the container in your terminal simply run:
+```
+docker start crypto-data_web_1
+docker exec -i -t crypto-data_web_1 /bin/bash
+```
