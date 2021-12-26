@@ -42,7 +42,7 @@ def get_tickers(client, sheet_name: str) -> list:
 
 def update_current_value(client, prices: dict) -> None:
     try:
-        1 == 1
+       1 == 1
         # TODO Update spreadsheet with current price
     except Exception as e:
         print(f"there was an error:\n {e}")
@@ -58,7 +58,7 @@ def main():
     gclient = authorize_gmail('ga-creds.json')
     mytickers = get_tickers(gclient, 'Form Test')
     myprices = get_prices(headers, mytickers)
-    update_current_value(myprices)
+    update_current_value(gclient, myprices)
     print('---------  end  ---------')
 
 if __name__ == '__main__':
