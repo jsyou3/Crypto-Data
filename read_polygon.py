@@ -9,12 +9,11 @@ def get_polygon_data(headers:dict, symbol: str):
     r = requests.get(url, headers=headers)
     return r.json()
 
-def authorize_gmail():
+def authorize_gmail(file_name: str):
     scope = [
         'https://www.googleapis.com/auth/drive',
         'https://www.googleapis.com/auth/drive.file'
     ]
-    file_name = 'ga-creds.json'
     creds = SAC.from_json_keyfile_name(
         file_name,
         scope
@@ -41,15 +40,26 @@ def get_tickers(client, sheet_name: str) -> list:
             tfinal.append(r)
     return tfinal
 
+def update_current_value(client, prices: dict) -> None:
+    try:
+        1 == 1
+        # TODO Update spreadsheet with current price
+    except Exception as e:
+        print(f"there was an error:\n {e}")
+
+    return None
+
 def main():
+    print('--------- start ---------')
     api_key = os.environ['POLYGON_API_KEY']
     headers = {
         'Authorization': f'Bearer {api_key}'
     }
-    gclient = authorize_gmail()
+    gclient = authorize_gmail('ga-creds.json')
     mytickers = get_tickers(gclient, 'Form Test')
     myprices = get_prices(headers, mytickers)
-    print(myprices)
+    update_current_value(myprices)
+    print('---------  end  ---------')
 
 if __name__ == '__main__':
     main()

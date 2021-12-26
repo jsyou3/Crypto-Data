@@ -12,7 +12,7 @@ This is a small project to pull crypto data and upload it to a google spreadshee
 
 # Building
 
-To build the image for the first tiem run 
+To build the image for the first time run 
 
 ```
 docker build .
